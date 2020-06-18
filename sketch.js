@@ -15,7 +15,7 @@ function setup() {
 	engine = Engine.create();
 	world = engine.world;
 
-	paper = new Paper(3,2,600,600);
+	paper = new Paper(600,600,5);
 	World.add(world, paper);
 	
 
@@ -30,9 +30,8 @@ function setup() {
 
 
 function draw() {
-  ellipseMode(CENTER);
   background(0);
-  
+  paper.display();
   drawSprites();
  
 }

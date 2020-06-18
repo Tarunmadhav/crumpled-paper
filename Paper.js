@@ -1,20 +1,22 @@
 class Paper{
-Constructor(x,y,radius,height){
+Constructor(x,y,radius){
     var options = {
         isStatic :  false,
         restitution : 0.3,
         friction : 0.5,
         density : 1.2
     }
-    this.body = Bodies.ellipse(x,y,radius,height,options);
-      this.radius = 3;
-      this.height = 2;
+    this.body = Bodies.circle(x,y,radius,options);
+      this.radius = radius;
       World.add(world, this.body);
 }
 display(){
-      var pos =this.body.position;
-      ellipseMode(CENTER);
+      var pos = this.body.position;
+      push();
+      ellipseMode(RADIUS);
+      translate(pos.x,pos.y)
       fill("white");
-      ellipse(pos.x, pos.y, this.radius, this.height);
+      ellipse(0, 0, this.radius,this.radius);
+     pop();
     }
 }
