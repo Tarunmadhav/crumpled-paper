@@ -15,12 +15,18 @@ function setup() {
 	engine = Engine.create();
 	world = engine.world;
 
-	paper = new Paper(600,600,5);
+	paper = new Paper(50,200,20);
 	World.add(world, paper);
-	
+	box = new Dustbin(600,400,10,50);
+	World.add(world,box);
+	box2 = new Dustbin(675,420,150,10);
+	World.add(world,box2);
+	box3 = new Dustbin(750,400,10,50);
+	World.add(world,box3);
 
 	//Create a Ground
-	ground = Bodies.rectangle(width/2, 650, width, 10 , {isStatic:true} );
+	fill("green")
+	ground = Bodies.rectangle(width/2, 420, width, 10 , {isStatic:true} );
  	World.add(world, ground);
 
 
@@ -32,9 +38,15 @@ function setup() {
 function draw() {
   background(0);
   paper.display();
+  box.display();
+  box2.display();
+  box3.display();
   drawSprites();
- 
 }
 
-
+function keyPressed(){
+	if (keyCode === UP_ARROW){
+		Matter.Body.applyForce(paper.body,paper.body.position,{x:85,y:-85})
+	}
+}
 
